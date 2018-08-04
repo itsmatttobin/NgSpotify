@@ -6,6 +6,7 @@
     "start:client": "ng serve --open",
     "start:server": "nodemon server/server.js",
     "build": "ng build",
+    "build:live": "ng build --configuration=live",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
