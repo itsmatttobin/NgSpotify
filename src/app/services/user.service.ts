@@ -15,19 +15,22 @@ export class UserService {
   ) {}
 
   public setLoggedInUser(accessToken: string) {
-    this.accessToken = accessToken;
+    return new Promise((resolve, reject) => {
+      this.accessToken = accessToken;
 
-    this.getSpotifyUserProfile()
-      .subscribe(
-        res => {
-          this.loggedIn = true;
-          this.userProfile = res;
-        },
-        err => {
-          this.loggedIn = false;
-          console.error(err);
-        }
-      );
+      this.getSpotifyUserProfile()
+        .subscribe(
+          res => {
+            this.loggedIn = true;
+            this.userProfile = res;
+            resolve(this.userProfile);
+          },
+          err => {
+            this.logout();
+            reject(err);
+          }
+        );
+    });
   }
 
   private getSpotifyUserProfile(): Observable<any> {
@@ -52,6 +55,11 @@ export class UserService {
 
   public getUserProfile() {
     return this.userProfile;
+  }
+
+  public logout() {
+    this.loggedIn = false;
+    localStorage.removeItem('ng-spotify-access-token');
   }
 }
 
