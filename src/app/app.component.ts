@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
     const accessToken = localStorage.getItem(itemId);
 
     if (accessToken) {
+
       this.userService.setLoggedInUser(accessToken)
         .then(response => {
           console.log('Logged in', response);
@@ -26,7 +27,9 @@ export class AppComponent implements OnInit {
         .catch(error => {
           console.error('ERROR:', error);
         });
+
     } else {
+
       this.route.queryParams.subscribe(params => {
         if (params['access_token']) {
           localStorage.setItem(itemId, params['access_token']);
@@ -41,6 +44,7 @@ export class AppComponent implements OnInit {
             });
         }
       });
+
     }
   }
 

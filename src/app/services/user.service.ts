@@ -12,10 +12,10 @@ export class UserService {
 
   constructor(
     private http: HttpClient
-  ) {}
+  ) { }
 
-  public setLoggedInUser(accessToken: string) {
-    return new Promise((resolve, reject) => {
+  public setLoggedInUser(accessToken: string): Promise<UserProfile> {
+    return new Promise<UserProfile>((resolve, reject) => {
       this.accessToken = accessToken;
 
       this.getSpotifyUserProfile()
@@ -45,22 +45,23 @@ export class UserService {
     return this.http.get(url, httpOptions);
   }
 
-  public getAccessToken() {
+  public getAccessToken(): string {
     return this.accessToken;
   }
 
-  public getLoginStatus() {
+  public getLoginStatus(): boolean {
     return this.loggedIn;
   }
 
-  public getUserProfile() {
+  public getUserProfile(): UserProfile {
     return this.userProfile;
   }
 
-  public logout() {
+  public logout(): void {
     this.loggedIn = false;
     localStorage.removeItem('ng-spotify-access-token');
   }
+
 }
 
 export interface UserProfile {
