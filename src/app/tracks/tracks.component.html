@@ -1,3 +1,21 @@
-<p>
-  tracks works!
-</p>
+<h1>Top tracks</h1>
+<div class="row">
+  <div class="col">
+    <h2>Short term</h2>
+    <ul>
+      <li *ngFor="let track of topTracksShortTerm">{{ track.name }}</li>
+    </ul>
+  </div>
+  <div class="col">
+    <h2>Medium term</h2>
+    <ul>
+      <li *ngFor="let track of topTracksMediumTerm">{{ track.name }}</li>
+    </ul>
+  </div>
+  <div class="col">
+    <h2>Long term</h2>
+    <ul>
+      <li *ngFor="let track of topTracksLongTerm">{{ track.name }}</li>
+    </ul>
+  </div>
+</div>

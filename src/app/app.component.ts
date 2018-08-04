@@ -21,11 +21,11 @@ export class AppComponent implements OnInit {
     if (accessToken) {
 
       this.userService.setLoggedInUser(accessToken)
-        .then(response => {
-          console.log('Logged in', response);
+        .then(res => {
+          console.log('Logged in', res);
         })
-        .catch(error => {
-          console.error('ERROR:', error);
+        .catch(err => {
+          console.error('ERROR:', err);
         });
 
     } else {
@@ -35,12 +35,12 @@ export class AppComponent implements OnInit {
           localStorage.setItem(itemId, params['access_token']);
 
           this.userService.setLoggedInUser(params['access_token'])
-            .then(response => {
-              console.log('Logged in', response);
+            .then(res => {
+              console.log('Logged in', res);
               this.router.navigate(['.'], { relativeTo: this.route, queryParams: {} });
             })
-            .catch(error => {
-              console.error('ERROR:', error);
+            .catch(err => {
+              console.error('ERROR:', err);
             });
         }
       });
