@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
+import { NavLink } from '../definitions/nav-link';
 
 @Component({
   selector: 'app-header',
@@ -40,9 +41,4 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
-}
-
-export interface NavLink {
-  name: string;
-  link: string;
 }

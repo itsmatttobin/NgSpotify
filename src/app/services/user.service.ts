@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { UserProfile } from '../definitions/user-profile';
+import { api } from '../definitions/api';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +36,7 @@ export class UserService {
   }
 
   private getSpotifyUserProfile(): Observable<any> {
-    const url = 'https://api.spotify.com/v1/me';
+    const endpoint = api.url + 'me';
 
     const httpOptions = {
       headers: new HttpHeaders({
@@ -42,7 +44,7 @@ export class UserService {
       })
     };
 
-    return this.http.get(url, httpOptions);
+    return this.http.get(endpoint, httpOptions);
   }
 
   public getAccessToken(): string {
@@ -62,18 +64,4 @@ export class UserService {
     localStorage.removeItem('ng-spotify-access-token');
   }
 
-}
-
-export interface UserProfile {
-  country: string;
-  display_name: string;
-  email: string;
-  href: string;
-  id: string;
-  product: string;
-  type: string;
-  uri: string;
-  external_urls: object;
-  followers: object;
-  images: Array<any>;
 }
