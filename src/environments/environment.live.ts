@@ -1,4 +1,4 @@
 export const environment = {
-  production: true,
+  production: false,
   loginUrl: 'https://ngspotifyauth.matttobin.co.uk/login'
 };
