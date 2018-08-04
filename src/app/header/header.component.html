@@ -1,18 +1,20 @@
 <header class="header">
-  <nav class="nav">
-    <ul class="nav__list">
-      <li class="nav__item">
-        <a routerLink="/" routerLinkActive="nav__link--active" class="nav__link">Dashboard</a>
-      </li>
-      <li class="nav__item">
-        <a routerLink="/artists" routerLinkActive="nav__link--active" class="nav__link">Artists</a>
-      </li>
-      <li class="nav__item">
-        <a routerLink="/tracks" routerLinkActive="nav__link--active" class="nav__link">Tracks</a>
-      </li>
-      <li class="nav__item">
-        <a class="nav__link" (click)="logout()">Logout</a>
-      </li>
-    </ul>
-  </nav>
+  <div class="container">
+    <nav class="nav">
+      <ul class="nav__list">
+        <li *ngFor="let link of links" class="nav__item">
+          <a [routerLink]="link.link"
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLinkActive="nav__link--active"
+            class="nav__link">{{ link.name }}</a>
+        </li>
+        <li class="nav__item nav__item--right">
+          <a class="nav__link" (click)="logout()">Logout</a>
+        </li>
+        <li class="nav__item nav__item--right">
+          <span class="nav__text">Logged in as <strong>{{ userId }}</strong></span>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </header>

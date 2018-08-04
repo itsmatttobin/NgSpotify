@@ -1,0 +1,52 @@
+.header {
+  background: $blue;
+  padding: 10px;
+  box-shadow: 0px 3px 7px $shadow;
+  color: $white;
+}
+
+.nav {
+  margin-left: -17px;
+  margin-right: -17px;
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  &__item {
+    display: inline-block;
+    
+    &--right {
+      float: right;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    color: $white;
+    position: relative;
+    padding: 15px 17px;
+
+    &:hover,
+    &--active {
+      &:after {
+        content: '';
+        display: block;
+        height: 2px;
+        width: 25px;
+        background-color: $white;
+        position: absolute;
+        bottom: 10px;
+      }
+    }
+  }
+
+  &__text {
+    display: inline-block;
+    padding: 15px 17px;
+  }
+}
