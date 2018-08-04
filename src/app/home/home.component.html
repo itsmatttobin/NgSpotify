@@ -1,6 +1,10 @@
-<p>
-  Spotify
-</p>
+<h1>Spotify</h1>
 
-<!-- <button (click)="getMessage()">Click</button> -->
-<a href="http://localhost:3000/login">Login</a>
+<div *ngIf="!userService.getLoginStatus()" class="login">
+  <a href="http://localhost:3000/login">Login</a>
+</div>
+
+<div *ngIf="userService.getLoginStatus()" class="profile">
+  <p>You are logged in!</p>
+  <p>User: {{ userService.getUserProfile().id }}</p>
+</div>
