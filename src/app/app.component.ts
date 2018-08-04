@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from './services/user.service';
+import { TracksService } from './services/tracks.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,8 @@ export class AppComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private tracksService: TracksService
   ) { }
 
   ngOnInit() {
@@ -21,8 +23,8 @@ export class AppComponent implements OnInit {
     if (accessToken) {
 
       this.userService.setLoggedInUser(accessToken)
-        .then(res => {
-          console.log('Logged in', res);
+        .then(() => {
+          this.tracksService.getTopTracksForAllTerms();
         })
         .catch(err => {
           console.error('ERROR:', err);
@@ -35,8 +37,8 @@ export class AppComponent implements OnInit {
           localStorage.setItem(itemId, params['access_token']);
 
           this.userService.setLoggedInUser(params['access_token'])
-            .then(res => {
-              console.log('Logged in', res);
+            .then(() => {
+              this.tracksService.getTopTracksForAllTerms();
               this.router.navigate(['.'], { relativeTo: this.route, queryParams: {} });
             })
             .catch(err => {

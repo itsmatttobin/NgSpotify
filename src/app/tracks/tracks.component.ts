@@ -17,45 +17,11 @@ export class TracksComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getTopTracksShortTerm();
-    this.getTopTracksMediumTerm();
-    this.getTopTracksLongTerm();
-  }
-
-  private getTopTracksShortTerm(): void {
-    this.tracksService.getTopTracks('short_term')
-      .subscribe(
-        res => {
-          this.topTracksShortTerm = res.items;
-        },
-        err => {
-          console.error('ERROR', err);
-        }
-      );
-  }
-
-  private getTopTracksMediumTerm(): void {
-    this.tracksService.getTopTracks('medium_term')
-      .subscribe(
-        res => {
-          this.topTracksMediumTerm = res.items;
-        },
-        err => {
-          console.error('ERROR', err);
-        }
-      );
-  }
-
-  private getTopTracksLongTerm(): void {
-    this.tracksService.getTopTracks('long_term')
-      .subscribe(
-        res => {
-          this.topTracksLongTerm = res.items;
-        },
-        err => {
-          console.error('ERROR', err);
-        }
-      );
+    this.tracksService.topTracks$.subscribe(res => {
+      this.topTracksShortTerm = res.shortTerm;
+      this.topTracksMediumTerm = res.mediumTerm;
+      this.topTracksLongTerm = res.longTerm;
+    });
   }
 
 }
