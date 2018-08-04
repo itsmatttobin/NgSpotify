@@ -48,4 +48,12 @@ export class AppComponent implements OnInit {
     }
   }
 
+  private isLoggedIn(): boolean {
+    if (this.userService.getLoginStatus() && this.userService.getUserProfile()) {
+      return true;
+    }
+
+    return false;
+  }
+
 }

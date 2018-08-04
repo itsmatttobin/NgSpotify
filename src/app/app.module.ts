@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { ArtistsComponent } from './artists/artists.component';
 import { TracksComponent } from './tracks/tracks.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     HomeComponent,
     ArtistsComponent,
     TracksComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
