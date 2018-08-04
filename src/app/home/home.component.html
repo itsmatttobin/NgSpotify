@@ -1,5 +1,5 @@
 <div *ngIf="!userService.getLoginStatus()" class="login">
-  <a href="https://ngspotifyauth.matttobin.co.uk/login">Login</a>
+  <a [href]="loginUrl">Login</a>
 </div>
 
 <div *ngIf="userService.getLoginStatus()" class="profile">
