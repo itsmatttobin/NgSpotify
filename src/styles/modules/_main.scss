@@ -2,10 +2,12 @@ html,
 body {
   margin: 0;
   padding: 0;
+  min-height: 100%;
 }
 
 body {
   background-color: $purple;
+  background: linear-gradient(45deg, $purple 0%, rgba($purple, 0.8) 85%);
   font-family: $sansSerif;
   color: $white;
   font-weight: 300;
