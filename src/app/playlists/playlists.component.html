@@ -1,14 +1,10 @@
 <div class="card card--white-bg card--orange card--playlist" [class.card--playlist--active]="playlistCardActive">
   <h4 class="card__title card__title--heading card__title--dark">Create a playlist with these tracks?</h4>
 
-  <div *ngIf="creating">
+  <div [hidden]="!creating">
     <div class="input-group">
-      <label for="playlist-name">Name</label>
-      <input type="text" id="playlist-name" name="playlist-name">
-    </div>
-    <div class="input-group">
-      <label for="playlist-public">Public</label>
-      <input type="checkbox" id="playlist-public" name="playlist-public">
+      <label class="label label--dark" for="playlist-name">Name</label>
+      <input type="text" id="playlist-name" name="playlist-name" [(ngModel)]="playlistName" #nameInput>
     </div>
   </div>
 
