@@ -11,11 +11,42 @@
     display: none;
   }
 
+  &__activate {
+    display: none;
+    text-align: right;
+    padding: 20px 0;
+    cursor: pointer;
+
+    @include media-breakpoint-down(sm) {
+      display: block;
+    }
+  }
+
+  &--active {
+    @include media-breakpoint-down(sm) {
+      display: block;
+    }
+  }
+
   &__item {
     display: inline-block;
+
+    @include media-breakpoint-down(sm) {
+      display: block;
+    }
     
     &--right {
       float: right;
+
+      @include media-breakpoint-down(sm) {
+        float: none;
+      }
+    }
+  }
+
+  &__user {
+    @include media-breakpoint-down(sm) {
+      display: none;
     }
   }
 
@@ -26,6 +57,10 @@
     color: $white;
     position: relative;
     padding: 30px 25px;
+
+    @include media-breakpoint-down(sm) {
+      display: block;
+    }
 
     &:hover,
     &--active {      

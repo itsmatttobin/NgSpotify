@@ -1,17 +1,19 @@
 <header class="header">
   <div class="container">
-    <nav class="nav">
+    <div class="nav__activate" (click)="menuActive = !menuActive">Menu</div>
+    <nav class="nav" [class.nav--active]="menuActive">
       <ul class="nav__list">
         <li *ngFor="let link of links" class="nav__item">
           <a [routerLink]="link.link"
             [routerLinkActiveOptions]="{ exact: true }"
             routerLinkActive="nav__link--active"
+            (click)="menuActive = false"
             class="nav__link">{{ link.name }}</a>
         </li>
         <li class="nav__item nav__item--right">
           <a class="nav__link" (click)="logout()">Logout</a>
         </li>
-        <li class="nav__item nav__item--right">
+        <li class="nav__item nav__item--right nav__user">
           <span class="nav__text">Logged in as <strong>{{ userId }}</strong></span>
         </li>
       </ul>

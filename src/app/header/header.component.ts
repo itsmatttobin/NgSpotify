@@ -10,6 +10,7 @@ import { NavLink } from '../definitions/nav-link';
 export class HeaderComponent implements OnInit {
   private links: Array<NavLink>;
   private userId: string;
+  private menuActive: boolean;
 
   constructor(
     private router: Router,
@@ -31,6 +32,8 @@ export class HeaderComponent implements OnInit {
     ];
 
     this.userId = this.userService.getUserProfile().id;
+
+    this.menuActive = false;
   }
 
   ngOnInit() {
