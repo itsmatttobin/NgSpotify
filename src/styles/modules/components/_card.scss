@@ -41,6 +41,16 @@
     }
   }
 
+  &__toggle {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 100%;
+    padding-left: 13px;
+    padding-right: 13px;
+  }
+
   &--blue {
     border-color: $lightBlue;
   }
@@ -59,7 +69,14 @@
 
   &--playlist {
     position: fixed;
-    right: 0;
     bottom: 10px;
+    right: 0;
+    transform: translateX(300px);
+    padding-left: 40px;
+    transition: transform 0.5s ease;
+
+    &--active {
+      transform: translateX(0);      
+    }
   }
 }

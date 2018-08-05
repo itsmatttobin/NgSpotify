@@ -1,5 +1,6 @@
-<div class="card card--white-bg card--orange card--playlist">
+<div class="card card--white-bg card--orange card--playlist" [class.card--playlist--active]="playlistCardActive">
   <h4 class="card__title card__title--heading card__title--dark">Create a playlist with these tracks?</h4>
   <button (click)="createPlaylist()"
     class="button button--dark button--ah-orange button--small">Create</button>
+  <button (click)="togglePlaylistCard()" class="icon-button card__toggle"><fa-icon [icon]="chevron"></fa-icon></button>
 </div>

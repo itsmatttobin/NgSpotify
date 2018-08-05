@@ -69,3 +69,12 @@
     border-color: $translucentHalfPurple;
   }
 }
+
+.icon-button {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  outline: none;
+  color: $purple;
+  font-size: 20px;
+}
