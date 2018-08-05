@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
   ) {
     this.links = [
       {
-        name: 'Dashboard',
+        name: 'Activity',
         link: '/'
       },
       {

@@ -4,6 +4,37 @@
 </div>
 
 <div *ngIf="userService.getLoginStatus()" class="profile">
-  <p>You are logged in!</p>
-  <p>User: {{ userService.getUserProfile().id }}</p>
+  <div class="row">
+    <div class="col">
+      <h1>Top artists this month</h1>
+
+      <ng-container *ngFor="let artist of topArtistsShortTerm; let index = index">
+        <div *ngIf="index < 5" class="card card--blue">
+          <div class="row">
+            <div class="col-9">
+              <p class="card__title">{{ artist.name }}</p>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <a routerLink="/artists" class="button button--full button--ah-blue">View all</a>
+    </div>
+    <div class="col">
+      <h1>Top tracks this month</h1>
+
+      <ng-container *ngFor="let track of topTracksShortTerm; let index = index">
+        <div *ngIf="index < 5" class="card card--yellow">
+          <div class="row">
+            <div class="col-9">
+              <p class="card__title">{{ track.name }}</p>
+              <p class="card__subtitle">{{ track.artists[0].name }}</p>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <a routerLink="/tracks" class="button button--full button--ah-yellow">View all</a>
+    </div>
+  </div>
 </div>

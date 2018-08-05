@@ -1,0 +1,29 @@
+.card {
+  background-color: $translucent;
+  padding: 25px 30px;
+  border-left: 2px solid $translucentHalf;
+  margin-bottom: 30px;
+  min-height: 103px;
+
+  &__title {
+    margin: 0;
+  }
+
+  &__subtitle {
+    margin-top: 7px;
+    margin-bottom: 0;
+    color: $translucentHalf;
+  }
+
+  &--blue {
+    border-color: $lightBlue;
+  }
+
+  &--orange {
+    border-color: $orange;
+  }
+
+  &--yellow {
+    border-color: $yellow;
+  }
+}
