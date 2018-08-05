@@ -3,8 +3,11 @@
   padding: 25px 30px;
   border-left: 2px solid $translucentHalf;
   margin-bottom: 30px;
-  min-height: 103px;
   position: relative;
+
+  @include media-breakpoint-up(md) {
+    min-height: 103px;
+  }
 
   &__title {
     margin: 0;
@@ -22,8 +25,12 @@
     background-position: center;
     background-size: cover;
     position: absolute;
-    top: -25px;
-    right: -142px;
+    top: 0;
+    right: 0;
+
+    @include media-breakpoint-down(md) {
+      display: none;
+    }
   }
 
   &--blue {
