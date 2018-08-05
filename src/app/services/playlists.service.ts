@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { UserService } from '../services/user.service';
 import { TracksService } from '../services/tracks.service';
 import { environment } from '../../environments/environment';
-import { Observable } from '../../../node_modules/rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,18 +15,23 @@ export class PlaylistsService {
     private http: HttpClient
   ) { }
 
-  public createPlaylistAndAddSongs(name: string) {
-    this.createPlaylist(name)
-      .then(res => {
-        console.log('created', res);
-      })
-      .catch(err => {
-        console.error('ERROR', err);
-      });
+  public createPlaylistAndAddTracks(name: string): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      this.createPlaylist(name)
+        .then(res => {
+          return this.addTracksToPlaylist(res.id);
+        })
+        .then(res => {
+          resolve(res);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
   }
 
-  private createPlaylist(name: string): Promise<object> {
-    return new Promise<object>((resolve, reject) => {
+  private createPlaylist(name: string): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
       const userId = this.userService.getUserProfile().id;
       const endpoint = environment.spotifyApi.host + `users/${userId}/playlists`;
 
@@ -43,7 +47,7 @@ export class PlaylistsService {
         public: false
       };
 
-      // TODO: Add description - created from NgSpotify on {date} with your top tracks in the {term}
+      // TODO: Add description - "Playlist created with {appName}"
 
       this.http.post(endpoint, body, httpOptions)
         .subscribe(
@@ -57,12 +61,42 @@ export class PlaylistsService {
     });
   }
 
-  private getTrackUrisToAddToPlaylist(/* playlist id*/): void {
-    // get top tracks here and add them to created playlist
-    console.log(this.tracksService.getUsersTopTracksBySelectedTerm());
+  private addTracksToPlaylist(playlistId: string): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      const trackUris = this.getTrackUrisToAddToPlaylist();
+
+      const userId = this.userService.getUserProfile().id;
+      const endpoint = environment.spotifyApi.host + `users/${userId}/playlists/${playlistId}/tracks`;
+
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Authorization': `Bearer ${this.userService.getAccessToken()}`,
+          'Content-Type': 'application/json'
+        })
+      };
+
+      const body = {
+        uris: trackUris
+      };
+
+      this.http.post(endpoint, body, httpOptions)
+        .subscribe(
+          res => {
+            resolve(res);
+          },
+          err => {
+            reject(err);
+          }
+        );
+    });
   }
 
-  // TODO: reset playlists info if selectedTerm is changed in tracks comp.
-  // Subject
+  private getTrackUrisToAddToPlaylist(): Array<string> {
+    const tracks = this.tracksService.getUsersTopTracksBySelectedTerm().map(track => {
+      return track.uri;
+    });
+
+    return tracks;
+  }
 
 }

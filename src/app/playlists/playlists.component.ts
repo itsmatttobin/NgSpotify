@@ -13,6 +13,7 @@ export class PlaylistsComponent implements OnInit {
   private creating: boolean;
   private playlistName: string;
   private playlistNameInput: HTMLElement;
+  private status: string;
 
   constructor(
     private playlistsService: PlaylistsService,
@@ -21,6 +22,7 @@ export class PlaylistsComponent implements OnInit {
     this.playlistCardActive = true;
     this.creating = false;
     this.playlistName = '';
+    this.status = null;
   }
 
   ngOnInit() {
@@ -35,22 +37,25 @@ export class PlaylistsComponent implements OnInit {
         this.playlistNameInput.focus();
       });
     } else {
-      this.playlistsService.createPlaylistAndAddSongs(this.playlistName);
+      this.playlistsService.createPlaylistAndAddTracks(this.playlistName)
+        .then(res => {
+          this.status = 'success';
+          this.resetCreating();
 
-      // this.playlistsService.createPlaylist(this.playlistName).subscribe(res => {
-      //   console.log(res);
-      //   this.resetCreating();
-      // });
-      // this.playlistsService.createPlaylist(this.playlistName).then(res => {
-      //   console.log(res);
-      // }).catch(err => {
-      //   console.error('ERROR', err);
-      // });
+          setTimeout(() => {
+            this.status = null;
+          }, 3000);
+        })
+        .catch(err => {
+          this.status = 'error';
+          console.error('ERROR', err);
+
+          setTimeout(() => {
+            this.status = null;
+          }, 3000);
+        });
     }
   }
-
-  // TODO: reset playlists info if selectedTerm is changed in tracks comp.
-  // Subject
 
   private togglePlaylistCard(): void {
     this.playlistCardActive = !this.playlistCardActive;

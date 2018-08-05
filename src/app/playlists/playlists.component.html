@@ -4,9 +4,16 @@
   <div [hidden]="!creating">
     <div class="input-group">
       <label class="label label--dark" for="playlist-name">Name</label>
-      <input type="text" id="playlist-name" name="playlist-name" [(ngModel)]="playlistName" #nameInput>
+      <input type="text"
+        id="playlist-name"
+        name="playlist-name"
+        [(ngModel)]="playlistName"
+        class="text-input text-input--dark">
     </div>
   </div>
+
+  <p *ngIf="status === 'success'" class="message message--success">Playlist created!</p>
+  <p *ngIf="status === 'error'" class="message message--error">An error occured. Playlist not created.</p>
 
   <div>
     <button (click)="createPlaylist()"
