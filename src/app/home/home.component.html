@@ -13,6 +13,7 @@
           <div class="row">
             <div class="col-9">
               <p class="card__title">{{ artist.name }}</p>
+              <div class="card__image" [style.backgroundImage]="'url('+ artist.images[1].url +')'"></div>
             </div>
           </div>
         </div>
@@ -29,6 +30,7 @@
             <div class="col-9">
               <p class="card__title">{{ track.name }}</p>
               <p class="card__subtitle">{{ track.artists[0].name }}</p>
+              <div class="card__image" [style.backgroundImage]="'url('+ track.album.images[1].url +')'"></div>
             </div>
           </div>
         </div>

@@ -4,6 +4,7 @@
   border-left: 2px solid $translucentHalf;
   margin-bottom: 30px;
   min-height: 103px;
+  position: relative;
 
   &__title {
     margin: 0;
@@ -13,6 +14,16 @@
     margin-top: 7px;
     margin-bottom: 0;
     color: $translucentHalf;
+  }
+
+  &__image {
+    height: 103px;
+    width: 103px;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    top: -25px;
+    right: -142px;
   }
 
   &--blue {
