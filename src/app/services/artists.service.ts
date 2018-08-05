@@ -9,25 +9,25 @@ import { TopTypeRanges } from '../definitions/top-type-ranges';
 @Injectable({
   providedIn: 'root'
 })
-export class TracksService {
-  private topTracks: TopTypeRanges;
-  public topTracks$: BehaviorSubject<TopTypeRanges>;
+export class ArtistsService {
+  private topArtists: TopTypeRanges;
+  public topArtists$: BehaviorSubject<TopTypeRanges>;
 
   constructor(
     private http: HttpClient,
     private userService: UserService
   ) {
-    this.topTracks = {
+    this.topArtists = {
       shortTerm: [],
       mediumTerm: [],
       longTerm: []
     };
 
-    this.topTracks$ = new BehaviorSubject<TopTypeRanges>(this.topTracks);
+    this.topArtists$ = new BehaviorSubject<TopTypeRanges>(this.topArtists);
   }
 
-  public getTopTracks(timeRange: TimeRange = 'medium_term'): Observable<any> {
-    const endpoint = api.url + 'me/top/tracks';
+  public getTopArtists(timeRange: TimeRange = 'medium_term'): Observable<any> {
+    const endpoint = api.url + 'me/top/artists';
 
     const httpOptions = {
       headers: new HttpHeaders({
@@ -41,12 +41,12 @@ export class TracksService {
     return this.http.get(endpoint, httpOptions);
   }
 
-  public getTopTracksShortTerm(): void {
-    this.getTopTracks('short_term')
+  public getTopArtistsShortTerm(): void {
+    this.getTopArtists('short_term')
       .subscribe(
         res => {
-          this.topTracks.shortTerm = res.items;
-          this.topTracks$.next(this.topTracks);
+          this.topArtists.shortTerm = res.items;
+          this.topArtists$.next(this.topArtists);
         },
         err => {
           console.error('ERROR', err);
@@ -54,12 +54,12 @@ export class TracksService {
       );
   }
 
-  public getTopTracksMediumTerm(): void {
-    this.getTopTracks('medium_term')
+  public getTopArtistsMediumTerm(): void {
+    this.getTopArtists('medium_term')
       .subscribe(
         res => {
-          this.topTracks.mediumTerm = res.items;
-          this.topTracks$.next(this.topTracks);
+          this.topArtists.mediumTerm = res.items;
+          this.topArtists$.next(this.topArtists);
         },
         err => {
           console.error('ERROR', err);
@@ -67,12 +67,12 @@ export class TracksService {
       );
   }
 
-  public getTopTracksLongTerm(): void {
-    this.getTopTracks('long_term')
+  public getTopArtistsLongTerm(): void {
+    this.getTopArtists('long_term')
       .subscribe(
         res => {
-          this.topTracks.longTerm = res.items;
-          this.topTracks$.next(this.topTracks);
+          this.topArtists.longTerm = res.items;
+          this.topArtists$.next(this.topArtists);
         },
         err => {
           console.error('ERROR', err);
@@ -80,10 +80,9 @@ export class TracksService {
       );
   }
 
-  public getTopTracksForAllTerms(): void {
-    this.getTopTracksShortTerm();
-    this.getTopTracksMediumTerm();
-    this.getTopTracksLongTerm();
+  public getTopArtistsForAllTerms(): void {
+    this.getTopArtistsShortTerm();
+    this.getTopArtistsMediumTerm();
+    this.getTopArtistsLongTerm();
   }
-
 }

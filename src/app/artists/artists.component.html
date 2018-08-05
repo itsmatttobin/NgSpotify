@@ -1,3 +1,53 @@
-<p>
-  artists works!
-</p>
+<h1>Top artists</h1>
+
+<div class="row">
+  <div class="col">
+    <button class="button button--full button--ah-blue"
+    (click)="selectTerm(0)"
+    [class.button--active]="selectedTerm === 0">Short term <span class="button__sub-text">4 weeks</span></button>
+  </div>
+  <div class="col">
+    <button class="button button--full button--ah-orange"
+    (click)="selectTerm(1)"
+    [class.button--active]="selectedTerm === 1">Medium term <span class="button__sub-text">6 months</span></button>
+  </div>
+  <div class="col">
+    <button class="button button--full button--ah-yellow"
+    (click)="selectTerm(2)"
+    [class.button--active]="selectedTerm === 2">Long term <span class="button__sub-text">Years</span></button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <div *ngIf="selectedTerm === 0" class="panel panel--blue">
+      <ul class="list list--blue">
+        <li *ngFor="let artists of topArtistsShortTerm; let index = index" class="list__item">
+          <span class="list__num">{{ index + 1 }}.</span>
+          {{ artists.name }}
+          <a href="{{ artists.external_urls.spotify }}" target="_blank" class="list__link">Listen</a>
+        </li>
+      </ul>
+    </div>
+
+    <div *ngIf="selectedTerm === 1" class="panel panel--orange">
+      <ul class="list list--orange">
+        <li *ngFor="let artists of topArtistsMediumTerm; let index = index" class="list__item">
+          <span class="list__num">{{ index + 1 }}.</span>
+          {{ artists.name }}
+          <a href="{{ artists.external_urls.spotify }}" target="_blank" class="list__link">Listen</a>
+        </li>
+      </ul>
+    </div>
+
+    <div *ngIf="selectedTerm === 2" class="panel panel--yellow">
+      <ul class="list list--yellow">
+        <li *ngFor="let artists of topArtistsLongTerm; let index = index" class="list__item">
+          <span class="list__num">{{ index + 1 }}.</span>
+          {{ artists.name }}
+          <a href="{{ artists.external_urls.spotify }}" target="_blank" class="list__link">Listen</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

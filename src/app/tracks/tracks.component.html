@@ -3,18 +3,18 @@
 <div class="row">
   <div class="col">
     <button class="button button--full button--ah-blue"
-      (click)="selectTerm(0)"
-      [class.button--active]="selectedTerm === 0">Short term</button>
+    (click)="selectTerm(0)"
+    [class.button--active]="selectedTerm === 0">Short term <span class="button__sub-text">4 weeks</span></button>
   </div>
   <div class="col">
     <button class="button button--full button--ah-orange"
     (click)="selectTerm(1)"
-    [class.button--active]="selectedTerm === 1">Medium term</button>
+    [class.button--active]="selectedTerm === 1">Medium term <span class="button__sub-text">6 months</span></button>
   </div>
   <div class="col">
     <button class="button button--full button--ah-yellow"
     (click)="selectTerm(2)"
-    [class.button--active]="selectedTerm === 2">Long term</button>
+    [class.button--active]="selectedTerm === 2">Long term <span class="button__sub-text">Years</span></button>
   </div>
 </div>
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from './services/user.service';
 import { TracksService } from './services/tracks.service';
+import { ArtistsService } from './services/artists.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,8 @@ export class AppComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private userService: UserService,
-    private tracksService: TracksService
+    private tracksService: TracksService,
+    private artistsService: ArtistsService
   ) { }
 
   ngOnInit() {
@@ -25,6 +27,7 @@ export class AppComponent implements OnInit {
       this.userService.setLoggedInUser(accessToken)
         .then(() => {
           this.tracksService.getTopTracksForAllTerms();
+          this.artistsService.getTopArtistsForAllTerms();
         })
         .catch(err => {
           console.error('ERROR:', err);
@@ -39,6 +42,7 @@ export class AppComponent implements OnInit {
           this.userService.setLoggedInUser(params['access_token'])
             .then(() => {
               this.tracksService.getTopTracksForAllTerms();
+              this.artistsService.getTopArtistsForAllTerms();
               this.router.navigate(['.'], { relativeTo: this.route, queryParams: {} });
             })
             .catch(err => {

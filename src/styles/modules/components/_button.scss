@@ -18,6 +18,14 @@
     border-color: $orange;
   }
 
+  &__sub-text {
+    display: block;
+    color: $translucentHalf;
+    margin-top: 4px;
+    font-size: 12px;
+    font-weight: 300;
+  }
+
   &--large {
     min-width: 240px;    
   }
