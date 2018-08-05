@@ -30,6 +30,11 @@
     min-width: 240px;    
   }
 
+  &--small {
+    padding: 10px 30px;
+    font-size: 14px;
+  }
+
   &--full {
     width: 100%;
   }
@@ -56,5 +61,11 @@
       color: $yellow;
       border-color: $yellow;
     }
+  }
+
+  &--dark {
+    color: $purple;
+    background-color: $translucentPurple;
+    border-color: $translucentHalfPurple;
   }
 }

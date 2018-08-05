@@ -95,4 +95,20 @@ export class TracksService {
     return this.selectedTerm;
   }
 
+  public getUsersTopTracksBySelectedTerm(): Array<any> {
+    switch (this.selectedTerm) {
+      case 0:
+        return this.topTracks.shortTerm;
+
+      case 1:
+        return this.topTracks.mediumTerm;
+
+      case 2:
+        return this.topTracks.longTerm;
+
+      default:
+        return this.topTracks.shortTerm;
+    }
+  }
+
 }

@@ -62,4 +62,12 @@ export class AppComponent implements OnInit {
     return false;
   }
 
+  private isTracksPage(): boolean {
+    if (this.router.url === '/tracks') {
+      return true;
+    }
+
+    return false;
+  }
+
 }
