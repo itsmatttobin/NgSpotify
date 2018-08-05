@@ -1,0 +1,46 @@
+$num: null;
+
+.list {
+  .list__item {
+    margin-bottom: 5px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  &__num {
+    display: inline-block;
+    min-width: 28px;
+  }
+
+  &__link {
+    color: $translucentHalf;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &--blue {
+    .list__num,
+    .list__link {
+      color: $lightBlue;
+    }
+  }
+
+  &--orange {
+    .list__num,
+    .list__link {
+      color: $orange;
+    }
+  }
+
+  &--yellow {
+    .list__num,
+    .list__link {
+      color: $yellow;
+    }
+  }
+}

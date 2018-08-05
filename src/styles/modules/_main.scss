@@ -7,10 +7,18 @@ body {
 
 body {
   background-color: $purple;
-  background: linear-gradient(45deg, $purple 0%, rgba($purple, 0.8) 85%);
+  // background: linear-gradient(45deg, $purple 0%, rgba($purple, 0.8) 85%);
   font-family: $sansSerif;
   color: $white;
   font-weight: 400;
   letter-spacing: 0.5px;
   line-height: 1.4;
+  padding-bottom: 40px;
+}
+
+ul,
+ol {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }

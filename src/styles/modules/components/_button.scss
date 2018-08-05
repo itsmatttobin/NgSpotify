@@ -1,0 +1,52 @@
+.button {
+  $button: &;
+
+  color: $white;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: $translucent;
+  padding: 20px 30px;
+  display: inline-block;
+  text-align: center;
+  border: 0;
+  border-bottom: 2px solid $translucentHalf;
+  font-size: 16px;
+  font-family: inherit;
+  outline: none;
+  
+  &:hover {
+    border-color: $orange;
+  }
+
+  &--large {
+    min-width: 240px;    
+  }
+
+  &--full {
+    width: 100%;
+  }
+
+  &--ah-blue {
+    &#{$button}--active,
+    &:hover {
+      color: $lightBlue;
+      border-color: $lightBlue;
+    }
+  }
+
+  &--ah-orange {
+    &#{$button}--active,
+    &:hover {
+      color: $orange;
+      border-color: $orange;
+    }
+  }
+
+  &--ah-yellow {
+    &#{$button}--active,
+    &:hover {
+      color: $yellow;
+      border-color: $yellow;
+    }
+  }
+}

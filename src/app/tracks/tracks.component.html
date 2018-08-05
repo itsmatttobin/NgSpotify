@@ -1,21 +1,53 @@
 <h1>Top tracks</h1>
+
 <div class="row">
   <div class="col">
-    <h2>Short term</h2>
-    <ul>
-      <li *ngFor="let track of topTracksShortTerm">{{ track.name }}</li>
-    </ul>
+    <button class="button button--full button--ah-blue"
+      (click)="selectTerm(0)"
+      [class.button--active]="selectedTerm === 0">Short term</button>
   </div>
   <div class="col">
-    <h2>Medium term</h2>
-    <ul>
-      <li *ngFor="let track of topTracksMediumTerm">{{ track.name }}</li>
-    </ul>
+    <button class="button button--full button--ah-orange"
+    (click)="selectTerm(1)"
+    [class.button--active]="selectedTerm === 1">Medium term</button>
   </div>
   <div class="col">
-    <h2>Long term</h2>
-    <ul>
-      <li *ngFor="let track of topTracksLongTerm">{{ track.name }}</li>
-    </ul>
+    <button class="button button--full button--ah-yellow"
+    (click)="selectTerm(2)"
+    [class.button--active]="selectedTerm === 2">Long term</button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <div *ngIf="selectedTerm === 0" class="panel panel--blue">
+      <ul class="list list--blue">
+        <li *ngFor="let track of topTracksShortTerm; let index = index" class="list__item">
+          <span class="list__num">{{ index + 1 }}.</span>
+          {{ track.name }} - {{ track.artists[0].name }}
+          <a href="{{ track.external_urls.spotify }}" target="_blank" class="list__link">Listen</a>
+        </li>
+      </ul>
+    </div>
+
+    <div *ngIf="selectedTerm === 1" class="panel panel--orange">
+      <ul class="list list--orange">
+        <li *ngFor="let track of topTracksMediumTerm; let index = index" class="list__item">
+          <span class="list__num">{{ index + 1 }}.</span>
+          {{ track.name }} - {{ track.artists[0].name }}
+          <a href="{{ track.external_urls.spotify }}" target="_blank" class="list__link">Listen</a>
+        </li>
+      </ul>
+    </div>
+
+    <div *ngIf="selectedTerm === 2" class="panel panel--yellow">
+      <ul class="list list--yellow">
+        <li *ngFor="let track of topTracksLongTerm; let index = index" class="list__item">
+          <span class="list__num">{{ index + 1 }}.</span>
+          {{ track.name }} - {{ track.artists[0].name }}
+          <a href="{{ track.external_urls.spotify }}" target="_blank" class="list__link">Listen</a>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../services/user.service';
 import { TracksService } from '../services/tracks.service';
 
 @Component({
@@ -10,11 +9,13 @@ export class TracksComponent implements OnInit {
   private topTracksShortTerm: Array<any>;
   private topTracksMediumTerm: Array<any>;
   private topTracksLongTerm: Array<any>;
+  private selectedTerm: number;
 
   constructor(
-    private userService: UserService,
     private tracksService: TracksService
-  ) { }
+  ) {
+    this.selectedTerm = 0;
+  }
 
   ngOnInit() {
     this.tracksService.topTracks$.subscribe(res => {
@@ -22,6 +23,10 @@ export class TracksComponent implements OnInit {
       this.topTracksMediumTerm = res.mediumTerm;
       this.topTracksLongTerm = res.longTerm;
     });
+  }
+
+  private selectTerm(term: number): void {
+    this.selectedTerm = term;
   }
 
 }
