@@ -1,17 +1,17 @@
 <h1>Top artists</h1>
 
 <div class="row">
-  <div class="col">
+  <div class="col-12 col-md-4 term-col">
     <button class="button button--full button--ah-blue"
     (click)="selectTerm(0)"
     [class.button--active]="selectedTerm === 0">Short term <span class="button__sub-text">4 weeks</span></button>
   </div>
-  <div class="col">
+  <div class="col-12 col-md-4 term-col">
     <button class="button button--full button--ah-orange"
     (click)="selectTerm(1)"
     [class.button--active]="selectedTerm === 1">Medium term <span class="button__sub-text">6 months</span></button>
   </div>
-  <div class="col">
+  <div class="col-12 col-md-4 term-col">
     <button class="button button--full button--ah-yellow"
     (click)="selectTerm(2)"
     [class.button--active]="selectedTerm === 2">Long term <span class="button__sub-text">All time</span></button>

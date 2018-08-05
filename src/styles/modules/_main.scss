@@ -22,3 +22,13 @@ ol {
   margin: 0;
   padding: 0;
 }
+
+.term-col {
+  @include media-breakpoint-down(sm) {
+    margin-bottom: 30px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}

@@ -3,6 +3,11 @@ $num: null;
 .list {
   .list__item {
     margin-bottom: 5px;
+    
+    @include media-breakpoint-down(sm) {
+      position: relative;
+      padding-left: 36px;
+    }
 
     &:last-of-type {
       margin-bottom: 0;
@@ -12,11 +17,45 @@ $num: null;
   &__num {
     display: inline-block;
     min-width: 28px;
+
+    @include media-breakpoint-down(sm) {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+
+  &__main {
+    margin-left: 5px;
+
+    @include media-breakpoint-down(sm) {
+      margin-left: 0;
+      display: block;
+    }
+  }
+
+  &__sub {
+    color: $translucentHalf;
+    display: inline-block;
+    margin-left: 10px;
+
+    @include media-breakpoint-down(sm) {
+      margin-left: 0;
+      display: block;
+    }
   }
 
   &__link {
+    display: inline-block;
+    margin-left: 10px;
     color: $translucentHalf;
     text-decoration: none;
+
+    @include media-breakpoint-down(sm) {
+      display: block;
+      margin-bottom: 10px;
+      margin-left: 0;
+    }
 
     &:hover {
       text-decoration: underline;
