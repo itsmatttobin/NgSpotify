@@ -1,0 +1,18 @@
+.button {
+  color: $white;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: $translucent;
+  padding: 20px 30px;
+  display: inline-block;
+  text-align: center;
+  border-bottom: 2px solid $translucentHalf;
+  
+  &:hover {
+    border-color: $orange;
+  }
+
+  &--large {
+    min-width: 240px;    
+  }
+}

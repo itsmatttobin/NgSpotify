@@ -1,5 +1,6 @@
 <div *ngIf="!userService.getLoginStatus()" class="login">
-  <a [href]="loginUrl">Login</a>
+  <h1>NgSpotify</h1>
+  <a [href]="loginUrl" class="button button--large">Login</a>
 </div>
 
 <div *ngIf="userService.getLoginStatus()" class="profile">
