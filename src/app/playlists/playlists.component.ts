@@ -9,19 +9,25 @@ import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons
 export class PlaylistsComponent implements OnInit {
   private chevron: any;
   private playlistCardActive: boolean;
+  private creating: boolean;
 
   constructor(
     private playlistsService: PlaylistsService
   ) {
     this.chevron = faChevronRight;
     this.playlistCardActive = true;
+    this.creating = false;
   }
 
   ngOnInit() {
   }
 
   private createPlaylist(): void {
-    this.playlistsService.createPlaylist('this is the name', false);
+    if (!this.creating) {
+      this.creating = true;
+    } else {
+      this.playlistsService.createPlaylist('this is the name', false);
+    }
   }
 
   private togglePlaylistCard(): void {
@@ -32,6 +38,10 @@ export class PlaylistsComponent implements OnInit {
     } else {
       this.chevron = faChevronLeft;
     }
+  }
+
+  private resetCreating(): void {
+    this.creating = false;
   }
 
 }
