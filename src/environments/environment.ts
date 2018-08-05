@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  loginUrl: 'http://localhost:3000/login'
+  loginUrl: 'http://localhost:3000/login',
+  spotifyApi: {
+    host: 'https://api.spotify.com/v1/'
+  }
 };
 
 /*

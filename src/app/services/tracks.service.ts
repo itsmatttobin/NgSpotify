@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { UserService } from './user.service';
-import { api } from '../definitions/api';
 import { TimeRange } from '../definitions/time-range';
 import { TopTypeRanges } from '../definitions/top-type-ranges';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,7 @@ import { TopTypeRanges } from '../definitions/top-type-ranges';
 export class TracksService {
   private topTracks: TopTypeRanges;
   public topTracks$: BehaviorSubject<TopTypeRanges>;
+  private selectedTerm: number;
 
   constructor(
     private http: HttpClient,
@@ -27,7 +28,7 @@ export class TracksService {
   }
 
   public getTopTracks(timeRange: TimeRange = 'medium_term'): Observable<any> {
-    const endpoint = api.url + 'me/top/tracks';
+    const endpoint = environment.spotifyApi.host + 'me/top/tracks';
 
     const httpOptions = {
       headers: new HttpHeaders({
@@ -84,6 +85,14 @@ export class TracksService {
     this.getTopTracksShortTerm();
     this.getTopTracksMediumTerm();
     this.getTopTracksLongTerm();
+  }
+
+  public setSelectedTerm(term: number): void {
+    this.selectedTerm = term;
+  }
+
+  public getSelectedTerm(): number {
+    return this.selectedTerm;
   }
 
 }

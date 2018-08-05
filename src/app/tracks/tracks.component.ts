@@ -15,6 +15,7 @@ export class TracksComponent implements OnInit {
     private tracksService: TracksService
   ) {
     this.selectedTerm = 0;
+    this.tracksService.setSelectedTerm(this.selectedTerm);
   }
 
   ngOnInit() {
@@ -27,6 +28,7 @@ export class TracksComponent implements OnInit {
 
   private selectTerm(term: number): void {
     this.selectedTerm = term;
+    this.tracksService.setSelectedTerm(this.selectedTerm);
   }
 
 }

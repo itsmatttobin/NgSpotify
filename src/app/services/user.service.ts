@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserProfile } from '../definitions/user-profile';
-import { api } from '../definitions/api';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +36,7 @@ export class UserService {
   }
 
   private getSpotifyUserProfile(): Observable<any> {
-    const endpoint = api.url + 'me';
+    const endpoint = environment.spotifyApi.host + 'me';
 
     const httpOptions = {
       headers: new HttpHeaders({
