@@ -1,4 +1,4 @@
-<div class="card card--white-bg card--orange card--playlist" [class.card--playlist--active]="playlistCardActive">
+<div class="card card--white-bg card--blue card--playlist" [class.card--playlist--active]="playlistCardActive">
   <h4 class="card__title card__title--heading card__title--dark">Create a playlist with these tracks?</h4>
 
   <div [hidden]="!creating">
@@ -17,7 +17,7 @@
 
   <div>
     <button (click)="createPlaylist()"
-      class="button button--dark button--ah-orange button--small mr-3">Create</button>
+      class="button button--dark button--ah-blue button--small mr-3">Create</button>
     <button *ngIf="creating" (click)="resetCreating()"
       class="button button--dark button--ah-orange button--small">Cancel</button>
     <button (click)="togglePlaylistCard()"
