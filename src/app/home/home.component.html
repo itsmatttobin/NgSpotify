@@ -14,7 +14,9 @@
             <div class="col-12 col-lg-9">
               <p class="card__title">{{ artist.name }}</p>              
             </div>
-            <div class="card__image" [style.backgroundImage]="'url('+ artist.images[1].url +')'"></div>
+            <div class="card__image" [style.backgroundImage]="'url('+ artist.images[1].url +')'">
+              <a class="card__image__link" href="{{ artist.external_urls.spotify }}"></a>
+            </div>
           </div>
         </div>
       </ng-container>
@@ -32,7 +34,9 @@
               <p class="card__title">{{ track.name }}</p>
               <p class="card__subtitle">{{ track.artists[0].name }}</p>
             </div>
-            <div class="card__image" [style.backgroundImage]="'url('+ track.album.images[1].url +')'"></div>
+            <div class="card__image" [style.backgroundImage]="'url('+ track.album.images[1].url +')'">
+              <a class="card__image__link" href="{{ track.external_urls.spotify }}"></a>
+            </div>
           </div>
         </div>
       </ng-container>

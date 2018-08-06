@@ -39,6 +39,12 @@
     @include media-breakpoint-down(md) {
       display: none;
     }
+
+    &__link {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
   }
 
   &__toggle {
