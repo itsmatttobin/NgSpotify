@@ -4,4 +4,12 @@
   <router-outlet></router-outlet>
 </div>
 
+<footer class="footer">
+  <div class="container">
+    <div class="credit">Powered by
+      <a href="https://www.spotify.com/uk/">Spotify</a>
+    </div>
+  </div>
+</footer>
+
 <app-playlists *ngIf="isLoggedIn() && isTracksPage()"></app-playlists>

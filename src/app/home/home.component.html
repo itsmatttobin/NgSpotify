@@ -5,7 +5,7 @@
 
 <div *ngIf="userService.getLoginStatus()" class="profile">
   <div class="row">
-    <div class="col-12 col-md-6 mb-4">
+    <div class="col-12 col-md-6">
       <h1>Top artists this month</h1>
 
       <ng-container *ngFor="let artist of topArtistsShortTerm; let index = index">
@@ -24,7 +24,7 @@
       <a routerLink="/artists" class="button button--full button--ah-blue">View all</a>
     </div>
 
-    <div class="col-12 col-md-6 mb-4">
+    <div class="col-12 col-md-6">
       <h1>Top tracks this month</h1>
 
       <ng-container *ngFor="let track of topTracksShortTerm; let index = index">
