@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { UserService } from './services/user.service';
 import { TracksService } from './services/tracks.service';
 import { ArtistsService } from './services/artists.service';
@@ -16,7 +16,13 @@ export class AppComponent implements OnInit {
     private userService: UserService,
     private tracksService: TracksService,
     private artistsService: ArtistsService
-  ) { }
+  ) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        (<any>window).gtag('config', 'UA-123498437-1', { 'page_path': event.urlAfterRedirects });
+      }
+    });
+  }
 
   ngOnInit() {
     const itemId = 'ng-spotify-access-token';
