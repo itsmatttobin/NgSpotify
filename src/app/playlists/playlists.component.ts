@@ -42,6 +42,10 @@ export class PlaylistsComponent implements OnInit {
           this.status = 'success';
           this.resetCreating();
 
+          (<any>window).gtag('event', 'Created', {
+            'event_category': 'Playlist'
+          });
+
           setTimeout(() => {
             this.status = null;
           }, 3000);
