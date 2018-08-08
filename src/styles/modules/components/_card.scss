@@ -81,6 +81,11 @@
     padding-left: 40px;
     transition: transform 0.5s ease;
 
+    @include media-breakpoint-up(lg) {
+      bottom: auto;
+      top: 305px;
+    }
+
     &--active {
       transform: translateX(0);      
     }
