@@ -8,7 +8,8 @@
             [routerLinkActiveOptions]="{ exact: true }"
             routerLinkActive="nav__link--active"
             (click)="menuActive = false"
-            class="nav__link">{{ link.name }}</a>
+            class="nav__link"
+            [class.nav__link--active]="location.path() === '' && link.link === '/'">{{ link.name }}</a>
         </li>
         <li class="nav__item nav__item--right">
           <a class="nav__link" (click)="logout()">Logout</a>
