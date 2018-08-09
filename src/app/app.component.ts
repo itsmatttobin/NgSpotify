@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { UserService } from './services/user.service';
 import { TracksService } from './services/tracks.service';
@@ -13,6 +14,7 @@ export class AppComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private location: Location,
     private userService: UserService,
     private tracksService: TracksService,
     private artistsService: ArtistsService
@@ -49,7 +51,7 @@ export class AppComponent implements OnInit {
             .then(() => {
               this.tracksService.getTopTracksForAllTerms();
               this.artistsService.getTopArtistsForAllTerms();
-              this.router.navigate(['.'], { relativeTo: this.route, queryParams: {} });
+              this.location.go('/');
             })
             .catch(err => {
               console.error('ERROR:', err);
