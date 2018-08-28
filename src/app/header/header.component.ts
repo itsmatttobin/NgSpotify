@@ -24,12 +24,12 @@ export class HeaderComponent implements OnInit {
         link: '/'
       },
       {
-        name: 'Artists',
-        link: '/artists'
-      },
-      {
         name: 'Tracks',
         link: '/tracks'
+      },
+      {
+        name: 'Artists',
+        link: '/artists'
       }
     ];
 

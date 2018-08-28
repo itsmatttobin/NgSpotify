@@ -6,29 +6,10 @@
 <div *ngIf="userService.getLoginStatus()" class="profile">
   <div class="row">
     <div class="col-12 col-md-6">
-      <h1>Top artists this month</h1>
-
-      <ng-container *ngFor="let artist of topArtistsShortTerm; let index = index">
-        <div *ngIf="index < 5" class="card card--blue">
-          <div class="row">
-            <div class="col-12 col-lg-9">
-              <p class="card__title">{{ artist.name }}</p>              
-            </div>
-            <div class="card__image" [style.backgroundImage]="'url('+ artist.images[1].url +')'">
-              <a class="card__image__link" href="{{ artist.external_urls.spotify }}"></a>
-            </div>
-          </div>
-        </div>
-      </ng-container>
-
-      <a routerLink="/artists" class="button button--full button--ah-blue">View all</a>
-    </div>
-
-    <div class="col-12 col-md-6">
       <h1>Top tracks this month</h1>
 
       <ng-container *ngFor="let track of topTracksShortTerm; let index = index">
-        <div *ngIf="index < 5" class="card card--yellow">
+        <div *ngIf="index < 5" class="card card--blue">
           <div class="row">
             <div class="col-12 col-lg-9">
               <p class="card__title">{{ track.name }}</p>
@@ -41,7 +22,26 @@
         </div>
       </ng-container>
 
-      <a routerLink="/tracks" class="button button--full button--ah-yellow">View all</a>
+      <a routerLink="/tracks" class="button button--full button--ah-blue">View all</a>
+    </div>
+
+    <div class="col-12 col-md-6">
+      <h1>Top artists this month</h1>
+    
+      <ng-container *ngFor="let artist of topArtistsShortTerm; let index = index">
+        <div *ngIf="index < 5" class="card card--yellow">
+          <div class="row">
+            <div class="col-12 col-lg-9">
+              <p class="card__title">{{ artist.name }}</p>
+            </div>
+            <div class="card__image" [style.backgroundImage]="'url('+ artist.images[1].url +')'">
+              <a class="card__image__link" href="{{ artist.external_urls.spotify }}"></a>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    
+      <a routerLink="/artists" class="button button--full button--ah-yellow">View all</a>
     </div>
   </div>
 </div>
